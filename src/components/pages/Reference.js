@@ -5,19 +5,57 @@ import Footer from "../layout/Footer";
 import Title from "../layout/Title";
 import Contact from "../layout/Contact";
 import ReferCont from "../include/ReferCont";
+import axios from "axios";
 
-function Reference() {
-  return (
-    <>
-      <Header />
-      <Contents>
-        <Title title={["Reference", "Api"]} />
-        <ReferCont />
-        <Contact />
-      </Contents>
-      <Footer />
-    </>
-  );
+// function Reference() {
+//   return (
+//     <>
+//       <Header />
+//       <Contents>
+//         <Title title={["Reference", "Api"]} />
+//         <ReferCont />
+//         <Contact />
+//       </Contents>
+//       <Footer />
+//     </>
+//   );
+// }
+
+class Reference extends React.Component {
+  state = {
+    refers: [],
+  };
+
+  getRefers = async () => {
+    const {
+      data: {
+        data: { htmlRefer },
+      },
+    } = await axios.get(
+      "https://webstoryboy.github.io/react2022/src/assets/json/refer.json"
+    );
+    console.log(htmlRefer);
+    this.setState({ refers: htmlRefer });
+  };
+
+  componentDidMount() {
+    this.getRefers();
+  }
+
+  render() {
+    const { refers } = this.state;
+    return (
+      <>
+        <Header />
+        <Contents>
+          <Title title={["Reference", "Api"]} />
+          <ReferCont refers={refers} />
+          <Contact />
+        </Contents>
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default Reference;
