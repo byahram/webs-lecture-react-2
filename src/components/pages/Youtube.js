@@ -27,7 +27,7 @@ function Youtube() {
         setVideos(result.items);
       })
       .catch((error) => console.log("error", error));
-  });
+  }, []);
 
   return (
     <>

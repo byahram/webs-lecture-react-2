@@ -26,7 +26,7 @@ function Movie() {
         setMovies(result.results);
       })
       .catch((error) => console.log("error", error));
-  });
+  }, []);
 
   return (
     <>
