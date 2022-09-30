@@ -1,41 +1,28 @@
 import React from "react";
 
-function UnsplashItem({ unsplash }) {
+function ImageItem(props) {
   return (
     <li>
-      <a href="/">
-        <img
-          className="unsplash_img"
-          src={unsplash.urls.regular}
-          alt={unsplash.desc}
-        />
-        <h2>{unsplash.user.name}</h2>
-        <p>{unsplash.alt_description}</p>
+      <a href={`https://unsplash.com/photos/${props.image.id}`}>
+        <img src={props.image.urls.regular} alt={props.image.id} />
+        <span>by "{props.image.user.name}"</span>
+        <span>{props.image.created_at}</span>
       </a>
     </li>
   );
 }
 
-function UnsplashList({ unsplashes }) {
-  // console.log(props);
-  return (
-    <div className="unsplash__list">
-      <ul>
-        {unsplashes.map((unsplashes, index) => (
-          <UnsplashItem key={index} unsplash={unsplashes} />
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function UnsplashCont({ unsplashes }) {
-  // console.log(unsplashes);
+function UnsplashCont(props) {
+  console.log(props);
   return (
     <div className="unsplash__cont">
       <div className="container">
-        <div className="unsplash__inner">
-          <UnsplashList unsplashes={unsplashes} />
+        <div className="unsplash__list">
+          <ul>
+            {props.images.map((images, index) => (
+              <ImageItem image={images} key={index} />
+            ))}
+          </ul>
         </div>
       </div>
     </div>
