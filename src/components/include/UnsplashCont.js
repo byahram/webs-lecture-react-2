@@ -4,9 +4,11 @@ function ImageItem(props) {
   return (
     <li>
       <a href={`https://unsplash.com/photos/${props.image.id}`}>
-        <img src={props.image.urls.regular} alt={props.image.id} />
-        <span>by "{props.image.user.name}"</span>
-        <span>{props.image.created_at}</span>
+        <img
+          src={props.image.urls.regular}
+          alt={props.image.id}
+          className="unsplash__img"
+        />
       </a>
     </li>
   );
