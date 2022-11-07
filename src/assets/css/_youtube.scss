@@ -101,6 +101,16 @@
     align-items: center;
   }
 
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #fff;
+    font-weight: 800;
+  }
+
+  .swiper-pagination {
+    color: #fff;
+  }
+
   .swiper-slide {
     text-align: center;
     font-size: 15px;

@@ -1,7 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
-import "swiper/css";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import "swiper/scss";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
 
 function Slider({ topVideo }) {
   return (
@@ -25,7 +27,7 @@ function YoutubeTopVideo({ topVideos }) {
           <h1>The Top 10 Videos</h1>
         </div>
         <Swiper
-          modules={[Autoplay]}
+          modules={[Autoplay, Pagination, Navigation]}
           slidesPerView={4}
           spaceBetween={50}
           loop={true}
@@ -33,6 +35,8 @@ function YoutubeTopVideo({ topVideos }) {
             delay: 3000,
             disableOnInteraction: false,
           }}
+          pagination={{ clickable: true }}
+          navigation={true}
           className="mySwiper"
         >
           <SwiperSlide>
